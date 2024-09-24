@@ -7,8 +7,12 @@ const db = require("../db/connection");
 
 app.get("/restaurants", async (req, res) => {
     const restaurants = await Restaurant.findAll()
-
     res.json(restaurants)
+})
+app.get("/restaurants/:id", async(req, res) =>{
+    const id = req.params.id
+    const restaurant = await Restaurant.findByPk(id)
+    res.json(restaurant)
 })
 
 
